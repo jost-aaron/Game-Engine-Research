@@ -11,5 +11,5 @@ void main(){
     float intensity = (1/length(vs_out_position.xy-light_pos))*0.5;
 
     gl_FragColor = vs_out_color*intensity;
-    // gl_FragColor = vs_out_color;
+      // gl_FragColor = vs_out_color;
 }

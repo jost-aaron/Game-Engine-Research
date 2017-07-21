@@ -20,6 +20,7 @@ const char* m_vertPath;
 const char* m_fragPath;
 
 public:
+Shader(){}
 Shader(const char* vertPath, const char* fragPath);
 ~Shader();
 
