@@ -1,4 +1,4 @@
-#include "vertexArray.h"
+#include "vertexArray.hpp"
 
 
 namespace Graphics {
@@ -23,7 +23,7 @@ void vertexArray::addBuffer(Buffer* buffer,GLuint index){
 
   glEnableVertexAttribArray(index);
   glVertexAttribPointer(index,buffer->getComponentCount(),GL_FLOAT,GL_FALSE,0,0);
-  
+
 
   buffer->unbind();
   unbind();

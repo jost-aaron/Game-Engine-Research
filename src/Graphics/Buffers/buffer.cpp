@@ -1,4 +1,4 @@
-#include "buffer.h"
+#include "buffer.hpp"
 namespace Graphics {
 
 Buffer::Buffer(GLfloat* data,GLuint count,GLuint componentCount){

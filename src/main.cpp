@@ -1,7 +1,7 @@
 #include <iostream>
-#include "myUtils/log.h"
-#include "math/myMath.h"
-#include "myUtils/fileUtils.h"
+#include "myUtils/log.hpp"
+#include "math/myMath.hpp"
+#include "myUtils/fileUtils.hpp"
 
 // Graphics includes
 #include "Graphics/window.cpp"
@@ -10,11 +10,12 @@
 #include "Graphics/Buffers/indexBuffer.cpp"
 #include "Graphics/Buffers/vertexArray.cpp"
 #include "Graphics/simple2Drenderer.cpp"
-#include "Graphics/renderable2D.h"
+#include "Graphics/renderable2D.hpp"
 
 using namespace myMath;
 using namespace Graphics;
 using namespace myUtils;
+
 
 
 int main()
@@ -26,6 +27,8 @@ int main()
         // Generate A new window object
         Window window("Game Engine v0.1",1280, 720);
         window.init();
+
+
 
         mat4 ortho = mat4::orthographic(0.0f,16.0f,0.0f,9.0f,-1.0f,1.0f);
 

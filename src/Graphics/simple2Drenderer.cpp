@@ -1,4 +1,4 @@
-#include "simple2Drenderer.h"
+#include "simple2Drenderer.hpp"
 
 namespace Graphics {
 

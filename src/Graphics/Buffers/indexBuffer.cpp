@@ -1,4 +1,4 @@
-#include "indexBuffer.h"
+#include "indexBuffer.hpp"
 
 namespace Graphics {
 
