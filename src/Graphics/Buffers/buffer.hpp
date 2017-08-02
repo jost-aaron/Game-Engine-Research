@@ -12,6 +12,7 @@ GLuint m_ComponentCount;
 public:
 
 Buffer(GLfloat* data,GLuint count,GLuint componentCount);
+~Buffer();
 
 void bind() const;
 void unbind() const;

@@ -41,6 +41,8 @@ mat4 mat4::identity(){
 // multiply two matrix
 mat4& mat4::multiply(const mat4& other){
 
+        float data[16];
+
         for (size_t y = 0; y < 4; y++) {
                 for (size_t x = 0; x < 4; x++) {
 
@@ -48,11 +50,34 @@ mat4& mat4::multiply(const mat4& other){
                         for (size_t e = 0; e < 4; e++) {
                                 sum += elements[x + e*4]*other.elements[e + y*4];
                         }
-                        elements[x+y*4] = sum;
+                        data[x+y*4] = sum;
                 }
         }
 
+        memcpy(elements,data,4*4*sizeof(float));
+
         return *this;
+}
+
+  // Multiply a matrix by a vec3
+vec3 mat4::multiply(const vec3& other) const {
+
+  return vec3(
+      column[0].x * other.x + column[1].x * other.y + column[2].x * other.z + column[3].x,
+      column[0].y * other.y + column[1].y * other.y + column[2].y * other.z + column[3].y,
+      column[0].z * other.z + column[1].z * other.y + column[2].z * other.z + column[3].z
+  );
+}
+
+// Multiply a matrix by a vec4
+vec4 mat4::multiply(const vec4& other) const {
+
+  return vec4(
+      column[0].x * other.x + column[1].x * other.y + column[2].x * other.z + column[3].x * other.w,
+      column[0].y * other.y + column[1].y * other.y + column[2].y * other.z + column[3].y * other.w,
+      column[0].z * other.z + column[1].z * other.y + column[2].z * other.z + column[3].z * other.w,
+      column[0].w * other.w + column[1].w * other.y + column[2].w * other.z + column[3].w * other.w
+  );
 }
 
 mat4 operator*(mat4 left, const mat4& right){
@@ -62,6 +87,17 @@ mat4 operator*(mat4 left, const mat4& right){
 mat4& mat4::operator*=(const mat4& other){
         return multiply(other);
 }
+
+
+vec3 operator*(const mat4& left, const vec3& right){
+        return left.multiply(right);
+}
+
+vec4 operator*(const mat4& left, const vec4& right){
+        return left.multiply(right);
+}
+
+
 
 mat4 mat4::orthographic(float left,float right,float bottom,float top,float near,float far){
         mat4 result(1.0f);

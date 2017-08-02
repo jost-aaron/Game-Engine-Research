@@ -43,10 +43,11 @@ void Window::init(){
         // Hack to get the name string to convert to char* array
         const char * nameFix = nameFix_1.c_str();
 
-        // Manually set the GLSL version to 1.3
+        // Manually set the GLSL version to 3.3
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GLSL_VERSION_MAJOR);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GLSL_VERSION_MINOR);
-        // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        glfwSwapInterval(VSYNC);
 
         // Make the window non resisable
         glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
@@ -97,11 +98,7 @@ void Window::update(){
 
         /* Render here */
 
-        // Check for opengl errors
-        GLenum error = glGetError();
-        if(error != GL_NO_ERROR){
-          std::cout << "OpenGL Error: " << error << "\n";
-        }
+        glCheckError();
 
 
         /* Poll for and process events */
@@ -158,7 +155,7 @@ myMath::vec2 Window::getMousePosWindow(){
 myMath::vec2 Window::getMousePosGL(){
 
 
-  return myMath::vec2((float)(mouseX*16.0f/width),(float)(9.0f - mouseY*9.0f/height));
+  return myMath::vec2((float)(mouseX*32.0f/width - 16.0f),(float)(9.0f - mouseY*18.0f/height));
 }
 
 // -------------------------------- Callback Functions -------------------------------- //

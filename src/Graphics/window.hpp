@@ -3,16 +3,19 @@
 #include <GLFW/glfw3.h>
 #include <string>
 #include <iostream>
-#include "../myUtils/log.hpp"
-#include "../math/myMath.hpp"
+#include "../myUtils/include.hpp"
+#include "../math/include.hpp"
+#include "../myUtils/glCheckError.hpp"
 
+// VSYNC on=1.0 , off=0.0
+#define VSYNC 0.0
 
 // Max sizes for keyboard input states and mouse button states
 #define MAX_KEYBOARD_KEYS 1024
 #define MAX_MOUSE_BUTTONS 32
 
 // Set the version of glsl we want to use
-#define GLSL_VERSION_MAJOR 1
+#define GLSL_VERSION_MAJOR 3
 #define GLSL_VERSION_MINOR 3
 
 

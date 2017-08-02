@@ -1,5 +1,5 @@
 #pragma once
-#include "../myMath.hpp"
+#include "../include.hpp"
 #define PI 3.1415926535897
 
 namespace myMath {
@@ -20,6 +20,15 @@ struct mat4 {
         // Multiply two matricies
         mat4& multiply(const mat4& other);
         friend mat4 operator*(mat4 left, const mat4& right);
+
+        // Multiply a matrix by a vec3
+        vec3 multiply(const vec3& other) const;
+        friend vec3 operator*(const mat4& left, const vec3& right);
+
+        // Multiply a matrix by a vec4
+        vec4 multiply(const vec4& other) const;
+        friend vec4 operator*(const mat4& left, const vec4& right);
+
         mat4& operator*=(const mat4& other);
 
         float access(int,int);

@@ -70,8 +70,8 @@ GLuint Shader::load(){
 
         checkForShaderError(fragment,GL_COMPILE_STATUS,false,"Fragment shader failed to compile:\n");
 
-        // TODO: Figure out why this matters
-        //glBindAttribLocation(program,0,"position");
+        glBindAttribLocation(program,0,"position");
+        glBindAttribLocation(program,1,"color");
 
         glAttachShader(program,vertex);
         glAttachShader(program,fragment);
@@ -90,12 +90,16 @@ GLuint Shader::load(){
 
 // Enable the shader
 void Shader::enable() const {
+        glCheckError();
         glUseProgram(m_program);
+        glCheckError();
 }
 
 // Disable the shader
 void Shader::disable() const {
+        glCheckError();
         glUseProgram(0);
+        glCheckError();
 }
 
 // ---------------For Loading data into a shader program --------------//
@@ -103,32 +107,46 @@ void Shader::disable() const {
 // Get the loaction of the thing we want to load the data into
 // TODO: Casch the locations of all the peramiters of the shaders
 GLuint Shader::getUniformLocation(const GLchar* name){
+        glCheckError();
         return glGetUniformLocation(m_program,name);
+        glCheckError();
 }
 
 // Load a single float
 void Shader::setUniform1f(const GLchar* name, const float value){
+        glCheckError();
         glUniform1f(getUniformLocation(name),value);
+        glCheckError();
 }
 // Load a single integer
 void Shader::setUniform1i(const GLchar* name, const int value){
+        glCheckError();
         glUniform1i(getUniformLocation(name),value);
+        glCheckError();
 }
 // Load a vec2
 void Shader::setUniform2f(const GLchar* name, const myMath::vec2& value){
+        glCheckError();
         glUniform2f(getUniformLocation(name),value.x,value.y);
+        glCheckError();
 }
 // Load a vec3
 void Shader::setUniform3f(const GLchar* name, const myMath::vec3& value){
+        glCheckError();
         glUniform3f(getUniformLocation(name),value.x,value.y,value.z);
+        glCheckError();
 }
 // Load a vec4
 void Shader::setUniform4f(const GLchar* name, const myMath::vec4& value){
+        glCheckError();
         glUniform4f(getUniformLocation(name),value.x,value.y,value.z,value.w);
+        glCheckError();
 }
 // Load a mat4
 void Shader::setUniformMat4(const GLchar* name, const myMath::mat4& value){
+        glCheckError();
         glUniformMatrix4fv(getUniformLocation(name),1,GL_FALSE,value.elements);
+        glCheckError();
 }
 
 
