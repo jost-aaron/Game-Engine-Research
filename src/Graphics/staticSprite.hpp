@@ -1,7 +1,10 @@
 #pragma once
 
 #include "renderable2D.hpp"
-#include "Buffers/include.hpp"
+// #include "Buffers/include.hpp"
+#include "Buffers/buffer.hpp"
+#include "Buffers/indexBuffer.hpp"
+#include "Buffers/vertexArray.hpp"
 
 namespace Graphics {
 

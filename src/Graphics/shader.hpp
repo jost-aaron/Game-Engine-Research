@@ -1,9 +1,12 @@
 #pragma once
 
 #include <GL/glew.h>
-#include "../myUtils/include.hpp"
 #include <vector>
-#include "../math/include.hpp"
+#include "../myUtils/fileUtils.hpp"
+#include "../math/vector/vec2.hpp"
+#include "../math/vector/vec3.hpp"
+#include "../math/vector/vec4.hpp"
+#include "../math/matrix/mat4.hpp"
 
 
 namespace Graphics {

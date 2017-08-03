@@ -5,34 +5,34 @@ Buffer::Buffer(GLfloat* data,GLuint count,GLuint componentCount){
 
 // Set the number of components that are going to be in the buffer
         m_ComponentCount = componentCount;
-        glCheckError();
+        // glCheckError();
         glGenBuffers(1,&m_BufferID);
-        glCheckError();
+        // glCheckError();
         glBindBuffer(GL_ARRAY_BUFFER,m_BufferID);
-        glCheckError();
+        // glCheckError();
         glBufferData(GL_ARRAY_BUFFER,count*sizeof(float),data,GL_STATIC_DRAW);
-        glCheckError();
+        // glCheckError();
 }
 
 // Destructor for the buffer
 Buffer::~Buffer(){
-        glCheckError();
+        // glCheckError();
         glDeleteBuffers(1,&m_BufferID);
-        glCheckError();
+        // glCheckError();
 }
 
 // Bind the buffer
 void Buffer::bind() const {
-        glCheckError();
+        // glCheckError();
         glBindBuffer(GL_ARRAY_BUFFER,m_BufferID);
-        glCheckError();
+        // glCheckError();
 }
 
 // Unbind the buffer
 void Buffer::unbind() const {
-        glCheckError();
+        // glCheckError();
         glBindBuffer(GL_ARRAY_BUFFER,0);
-        glCheckError();
+        // glCheckError();
 }
 
 }

@@ -1,9 +1,11 @@
 #pragma once
+#include <GL/glew.h>
+#include <iostream>
 #include <string>
 
 #define GL_CHECK_DEBUG 0
 
-GLenum glCheckError_(const char *file, int line,const char *function)
+static GLenum glCheckError_(const char *file, int line,const char *function)
 {
     GLenum errorCode;
     while ((errorCode = glGetError()) != GL_NO_ERROR)
@@ -27,5 +29,5 @@ GLenum glCheckError_(const char *file, int line,const char *function)
 #if GL_CHECK_DEBUG
 #define glCheckError() glCheckError_(__FILE__, __LINE__,__FUNCTION__)
 #else
-#define glCheckError() 
+#define glCheckError()
 #endif

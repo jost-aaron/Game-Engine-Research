@@ -4,7 +4,11 @@
 #include "Buffers/indexBuffer.hpp"
 #include "Buffers/vertexArray.hpp"
 
-#include "../math/include.hpp"
+// #include "../math/include.hpp"
+#include "../math/vector/vec2.hpp"
+#include "../math/vector/vec3.hpp"
+#include "../math/vector/vec4.hpp"
+#include "../math/matrix/mat4.hpp"
 
 #include "shader.hpp"
 

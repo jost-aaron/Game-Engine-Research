@@ -2,22 +2,25 @@
 #include <iostream>
 
 // Graphics includes
-#include "Graphics/window.cpp"
-#include "Graphics/shader.cpp"
-#include "Graphics/simple2Drenderer.cpp"
+#include "Graphics/window.hpp"
+#include "Graphics/shader.hpp"
+#include "Graphics/simple2Drenderer.hpp"
 #include "Graphics/renderable2D.hpp"
-#include "Graphics/staticSprite.cpp"
-#include "Graphics/sprite.cpp"
-#include "Graphics/batchRenderer2D.cpp"
+#include "Graphics/staticSprite.hpp"
+#include "Graphics/sprite.hpp"
+#include "Graphics/batchRenderer2D.hpp"
 
 #include "myUtils/fpsCounter.hpp"
 #include "myUtils/myTimer.hpp"
 
 // Other includes
-#include "myUtils/include.hpp"
-#include "math/include.hpp"
-#include "Graphics/layers/layer.cpp"
-#include "Graphics/layers/tileLayer.cpp"
+#include "myUtils/log.hpp"
+#include "math/vector/vec2.hpp"
+#include "math/vector/vec3.hpp"
+#include "math/vector/vec4.hpp"
+
+#include "Graphics/layers/layer.hpp"
+#include "Graphics/layers/tileLayer.hpp"
 
 #define VERSION "v0.1"
 #define WINDOW_NAME "Game Engine " VERSION
@@ -89,30 +92,15 @@ int main()
 
                 layer2.render();
 
-
-
-
-                // std::cout << "Rendering sprite 1\n";
-
-
-                // std::cout <<std::endl;
-
-
-
-
-
-                // std::cout << "Rendering sprite 2\n";
-                // layer2.render();
-
                 window.update();
 
                 showFPS_GLFW(window,t.getFPS());
-                // std::cout << std::endl;
 
-                //  break;
+
 
         }
         std::cin;
+
         // Close the window
         window.closeWindow();
         std::cout <<"\n";

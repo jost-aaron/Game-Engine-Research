@@ -1,5 +1,5 @@
 #pragma once
-#include "indexBuffer.hpp"
+#include <GL/glew.h>
 #include "../../myUtils/glCheckError.hpp"
 
 namespace Graphics {

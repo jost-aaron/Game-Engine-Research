@@ -3,9 +3,15 @@
 #include <GLFW/glfw3.h>
 #include <string>
 #include <iostream>
-#include "../myUtils/include.hpp"
-#include "../math/include.hpp"
+#include "../math/vector/vec2.hpp"
+#include "../math/vector/vec3.hpp"
+#include "../math/vector/vec4.hpp"
+#include "../math/matrix/mat4.hpp"
 #include "../myUtils/glCheckError.hpp"
+#include "../myUtils/log.hpp"
+#include "../myUtils/glCheckError.hpp"
+
+
 
 // VSYNC on=1.0 , off=0.0
 #define VSYNC 0.0

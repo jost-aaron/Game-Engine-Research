@@ -2,7 +2,11 @@
 
 #include "renderable2D.hpp"
 #include <GL/glew.h>
-#include "../math/include.hpp"
+// #include "../math/include.hpp"
+#include "../math/vector/vec2.hpp"
+#include "../math/vector/vec3.hpp"
+#include "../math/vector/vec4.hpp"
+#include "../math/matrix/mat4.hpp"
 #include "staticSprite.hpp"
 #include <vector>
 

@@ -1,12 +1,19 @@
 #pragma once
-#include "../include.hpp"
-#define PI 3.1415926535897
+// #include "../toRadians.hpp"
+#include "../vector/vec2.hpp"
+#include "../vector/vec3.hpp"
+#include "../vector/vec4.hpp"
+#include <cstring>
 
 namespace myMath {
 
-float toRadians(float degrees);
 
 struct mat4 {
+
+        // inline float toRadians(float degrees){
+        //         return degrees*(3.1415926535897 / 180.0f);
+        // }
+
 
         // This allows for accessing individual collums of the matrix as a refferenced version without making a new one
         union {

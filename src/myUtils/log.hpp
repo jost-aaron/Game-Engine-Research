@@ -33,7 +33,7 @@
 namespace myUtils { namespace logging {
 
 // Get current date/time, format is YmyUtilsYYY-MM-DD.HH:mm:ss
-std::string currentDateTime() {
+static std::string currentDateTime() {
         time_t now = time(0);
         struct tm tstruct;
         char buf[80];
@@ -44,12 +44,12 @@ std::string currentDateTime() {
 }
 
 // For logging to the console
-void console(std::string str_to_log) {
+static void console(std::string str_to_log) {
         std::cout << "- " << str_to_log << "\n";
 }
 
 //For logging to the log file
-void file(std::string str_to_log) {
+static void file(std::string str_to_log) {
         std::ofstream log_file;
 
         log_file.open(LOG_FILE_NAME, std::ios_base::app);
@@ -57,7 +57,7 @@ void file(std::string str_to_log) {
 }
 
 // For clearing the current log file
-void clear(){
+static void clear(){
         std::ofstream log_file;
 
         log_file.open(LOG_FILE_NAME);
@@ -66,7 +66,7 @@ void clear(){
 
 
 // For logging to both the file and console at the same time
-void both(std::string str_to_log){
+static void both(std::string str_to_log){
         file(str_to_log);
         console(str_to_log);
 }

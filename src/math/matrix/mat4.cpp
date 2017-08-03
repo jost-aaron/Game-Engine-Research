@@ -132,7 +132,7 @@ mat4 mat4::orthographic(float left,float right,float bottom,float top,float near
 mat4 mat4::perspective(float fov,float aspectRatio,float near,float far){
         mat4 result(0.0f);
 
-        float q = 1.0f / tan(toRadians(0.5*fov));
+        float q = 1.0f / tan(0.5*fov*(3.1415926535897 / 180.0f));
         float a = q / aspectRatio;
 
         result.modify(0,0,a);
@@ -158,7 +158,7 @@ mat4 mat4::translation(const vec3& translation){
 mat4 mat4::rotation(float angle, const vec3& axis){
         mat4 result(1.0f);
 
-        float a_rads = toRadians(angle);
+        float a_rads = angle*(3.1415926535897 / 180.0f);
         float a_cos = cos(a_rads);
         float a_sin = sin(a_rads);
 
