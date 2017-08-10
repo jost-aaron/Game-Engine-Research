@@ -31,7 +31,7 @@ void Layer::render(){
         glCheckError();
 
         for (const Renderable2D* renderable : m_Renderables) {
-                        m_Renderer->submit(renderable);
+                        renderable->submit(m_Renderer);
 
         }
 

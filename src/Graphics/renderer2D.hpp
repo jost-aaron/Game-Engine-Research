@@ -1,16 +1,24 @@
 #pragma once
 
-#include "renderable2D.hpp"
 #include <GL/glew.h>
-// #include "../math/include.hpp"
+#include <vector>
+
+// Math includes
 #include "../math/vector/vec2.hpp"
 #include "../math/vector/vec3.hpp"
 #include "../math/vector/vec4.hpp"
 #include "../math/matrix/mat4.hpp"
-#include "staticSprite.hpp"
-#include <vector>
+
+// #include "renderable2D.hpp"
+
+// #include "staticSprite.hpp"
 
 namespace Graphics {
+
+// Forward declared Renderable2D so it dosent have to be included
+// Causing recursive including of the headers
+class Renderable2D;
+class StaticSprite;
 
 class Renderer2D {
 

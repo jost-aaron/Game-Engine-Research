@@ -1,4 +1,6 @@
-#pragma once
+#ifndef MY_TIMER_INCLUDE
+#define MY_TIMER_INCLUDE
+
 #include <ctime>
 
 class myTimer {
@@ -46,14 +48,16 @@ int getFPS(){
 
 double elapsedTime(){
 
-  // Get the end time
-  clock_t endTime = clock();
+        // Get the end time
+        clock_t endTime = clock();
 
-  // Calculate the clocks that happend from start to end
-  clock_t clockTicksTaken = endTime - startTime;
+        // Calculate the clocks that happend from start to end
+        clock_t clockTicksTaken = endTime - startTime;
 
-  return (double)(clockTicksTaken / (double) CLOCKS_PER_SEC);
+        return (double)(clockTicksTaken / (double) CLOCKS_PER_SEC);
 
 }
 
 };
+
+#endif

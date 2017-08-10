@@ -1,10 +1,9 @@
 #pragma once
-
-#include "renderable2D.hpp"
-// #include "Buffers/include.hpp"
 #include "Buffers/buffer.hpp"
 #include "Buffers/indexBuffer.hpp"
 #include "Buffers/vertexArray.hpp"
+#include "shader.hpp"
+#include "renderable2D.hpp"
 
 namespace Graphics {
 
@@ -31,5 +30,6 @@ inline const indexBuffer* getIbo() const {
 inline Shader& getShader() const {
         return m_Shader;
 };
+
 };
 }

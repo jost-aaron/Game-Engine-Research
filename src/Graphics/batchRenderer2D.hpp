@@ -1,8 +1,8 @@
 #pragma once
-// #include "renderable2D.hpp"
 #include <GL/glew.h>
 #include <cstddef>
 #include "renderer2D.hpp"
+#include "renderable2D.hpp"
 #include "Buffers/vertexArray.hpp"
 #include "../myUtils/glCheckError.hpp"
 

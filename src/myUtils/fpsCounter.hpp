@@ -1,4 +1,6 @@
-#pragma once
+#ifndef FPS_COUTER_INCLUDED
+#define FPS_COUTER_INCLUDED
+
 #include "../Graphics/window.hpp"
 #include "myTimer.hpp"
 #include <sstream>
@@ -13,11 +15,9 @@ void showFPS_GLFW(Graphics::Window& windowIn,double fps)
 {
         // Settings for formating the’ was not declared in this scope
         #define NUM_SPACES_1 2
-        #define NUM_SPACES_2 80
-
+        #define NUM_SPACES_2 90
 
         std::stringstream ss;
-
 
         ss << windowIn.name;
 
@@ -36,9 +36,6 @@ void showFPS_GLFW(Graphics::Window& windowIn,double fps)
 
         glfwSetWindowTitle(windowIn.window_obj, ss.str().c_str());
 
-
-
-
-
-
 }
+
+#endif

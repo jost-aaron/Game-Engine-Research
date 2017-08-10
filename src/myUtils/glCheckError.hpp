@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GL_CHECK_ERROR_INCLUDED
+#define GL_CHECK_ERROR_INCLUDED
+
 #include <GL/glew.h>
 #include <iostream>
 #include <string>
@@ -21,13 +23,15 @@ static GLenum glCheckError_(const char *file, int line,const char *function)
             case GL_OUT_OF_MEMORY:                 error = "OUT_OF_MEMORY"; break;
             case GL_INVALID_FRAMEBUFFER_OPERATION: error = "INVALID_FRAMEBUFFER_OPERATION"; break;
         }
-        // std::cout << error << " | " << file << " (" << line << ") " << function <<"()" << std::endl;
         std::cout << "ERROR: " << error << "     Function:" << function << "()     Line: " << line << "     File: " << file  << std::endl;
     }
     return errorCode;
 }
+
 #if GL_CHECK_DEBUG
 #define glCheckError() glCheckError_(__FILE__, __LINE__,__FUNCTION__)
 #else
 #define glCheckError()
+#endif
+
 #endif

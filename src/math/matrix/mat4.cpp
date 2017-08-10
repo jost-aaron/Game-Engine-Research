@@ -59,25 +59,25 @@ mat4& mat4::multiply(const mat4& other){
         return *this;
 }
 
-  // Multiply a matrix by a vec3
+// Multiply a matrix by a vec3
 vec3 mat4::multiply(const vec3& other) const {
 
-  return vec3(
-      column[0].x * other.x + column[1].x * other.y + column[2].x * other.z + column[3].x,
-      column[0].y * other.y + column[1].y * other.y + column[2].y * other.z + column[3].y,
-      column[0].z * other.z + column[1].z * other.y + column[2].z * other.z + column[3].z
-  );
+        return vec3(
+                column[0].x * other.x + column[1].x * other.y + column[2].x * other.z + column[3].x,
+                column[0].y * other.y + column[1].y * other.y + column[2].y * other.z + column[3].y,
+                column[0].z * other.z + column[1].z * other.y + column[2].z * other.z + column[3].z
+                );
 }
 
 // Multiply a matrix by a vec4
 vec4 mat4::multiply(const vec4& other) const {
 
-  return vec4(
-      column[0].x * other.x + column[1].x * other.y + column[2].x * other.z + column[3].x * other.w,
-      column[0].y * other.y + column[1].y * other.y + column[2].y * other.z + column[3].y * other.w,
-      column[0].z * other.z + column[1].z * other.y + column[2].z * other.z + column[3].z * other.w,
-      column[0].w * other.w + column[1].w * other.y + column[2].w * other.z + column[3].w * other.w
-  );
+        return vec4(
+                column[0].x * other.x + column[1].x * other.y + column[2].x * other.z + column[3].x * other.w,
+                column[0].y * other.y + column[1].y * other.y + column[2].y * other.z + column[3].y * other.w,
+                column[0].z * other.z + column[1].z * other.y + column[2].z * other.z + column[3].z * other.w,
+                column[0].w * other.w + column[1].w * other.y + column[2].w * other.z + column[3].w * other.w
+                );
 }
 
 mat4 operator*(mat4 left, const mat4& right){
@@ -113,21 +113,21 @@ mat4 mat4::orthographic(float left,float right,float bottom,float top,float near
 }
 
 // mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far)
-// 	{
-// 		mat4 result(1.0f);
+//  {
+//    mat4 result(1.0f);
 //
-// 		result.elements[0 + 0 * 4] = 2.0f / (right - left);
+//    result.elements[0 + 0 * 4] = 2.0f / (right - left);
 //
-// 		result.elements[1 + 1 * 4] = 2.0f / (top - bottom);
+//    result.elements[1 + 1 * 4] = 2.0f / (top - bottom);
 //
-// 		result.elements[2 + 2 * 4] = 2.0f / (near - far);
+//    result.elements[2 + 2 * 4] = 2.0f / (near - far);
 //
-// 		result.elements[3 + 0 * 4] = (left + right) / (left - right);
-// 		result.elements[3 + 1 * 4] = (bottom + top) / (bottom - top);
-// 		result.elements[3 + 2 * 4] = (far + near) / (far - near);
+//    result.elements[3 + 0 * 4] = (left + right) / (left - right);
+//    result.elements[3 + 1 * 4] = (bottom + top) / (bottom - top);
+//    result.elements[3 + 2 * 4] = (far + near) / (far - near);
 //
-// 		return result;
-// 	}
+//    return result;
+//  }
 
 mat4 mat4::perspective(float fov,float aspectRatio,float near,float far){
         mat4 result(0.0f);
@@ -155,10 +155,40 @@ mat4 mat4::translation(const vec3& translation){
         return result;
 }
 
+#if 1
+
 mat4 mat4::rotation(float angle, const vec3& axis){
         mat4 result(1.0f);
 
-        float a_rads = angle*(3.1415926535897 / 180.0f);
+        float r = angle*(3.1415926535897f / 180.0f);
+        float c = cos(r);
+        float s = sin(r);
+        float omc = 1.0f - c;
+
+        float x = axis.x;
+        float y = axis.y;
+        float z = axis.z;
+
+        result.elements[0 + 0 * 4] = x * omc + c;
+        result.elements[0 + 1 * 4] = -(y * x * omc + z * s);
+        result.elements[0 + 2 * 4] = x * z * omc - y * s;
+
+        result.elements[1 + 0 * 4] = -(x * y * omc - z * s);
+        result.elements[1 + 1 * 4] = (y * omc + c);
+        result.elements[1 + 2 * 4] = y * z * omc + x * s;
+
+        result.elements[2 + 0 * 4] = x * z * omc + y * s;
+        result.elements[2 + 1 * 4] = y * z * omc - x * s;
+        result.elements[2 + 2 * 4] = z * omc + c;
+
+        return result;
+}
+
+#else
+mat4 mat4::rotation(float angle, const vec3& axis){
+        mat4 result(1.0f);
+
+        float a_rads = angle*(3.1415926535897f / 180.0f);
         float a_cos = cos(a_rads);
         float a_sin = sin(a_rads);
 
@@ -188,6 +218,7 @@ mat4 mat4::rotation(float angle, const vec3& axis){
         return result;
 }
 
+#endif
 
 // Generate a scalse matrix for the following scale vector
 mat4 mat4::scale(const vec3& scale){
@@ -203,11 +234,11 @@ mat4 mat4::scale(const vec3& scale){
 std::ostream& operator<<(std::ostream& stream,mat4& matrix) {
         stream << "mat4:\n";
         for (int row = 0; row < 4; row++) {
-          stream << "   | ";
-          for (int colum = 0; colum < 4; colum++) {
-            stream << " " << std::to_string(matrix.access(row,colum)) << " ";
-          }
-          stream << " |\n";
+                stream << "   | ";
+                for (int colum = 0; colum < 4; colum++) {
+                        stream << " " << std::to_string(matrix.access(row,colum)) << " ";
+                }
+                stream << " |\n";
         }
         return stream;
 }

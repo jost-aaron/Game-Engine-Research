@@ -1,12 +1,10 @@
-#pragma once
+#ifndef LOGGING_INCLUDED
+#define LOGGING_INCLUDED
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <time.h>
-
-// Header guard to make sure this is only included once
-#ifndef logging_header_included
-#define logging_header_included
 
 // The default log file type
 #define LOG_FILE_NAME "log.txt"
