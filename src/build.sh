@@ -15,6 +15,11 @@ case $i in
     -dr|--debugRecompile)
     COMPILE_MODE=1
     make cleanAll
+    python makeGen.py main.cpp "-lGL -lGLU -lGLEW -lglfw"
+    # if the makefile was not generated sucessfully exit
+    if [ $? -eq 1 ]; then
+      exit
+    fi
     ;;
     # Compile changes with full compiler optimization
     -r|--release)
@@ -24,6 +29,11 @@ case $i in
     -rr|--releaseRecompile)
     COMPILE_MODE=2
     make cleanAll
+    python makeGen.py main.cpp "-lGL -lGLU -lGLEW -lglfw"
+    # if the makefile was not generated sucessfully exit
+    if [ $? -eq 1 ]; then
+      exit
+    fi
     ;;
     # Set the number of cores to utalize
     -c=*|--cores=*)
@@ -41,12 +51,15 @@ case $i in
   done
 
 # Set the compile mode and number of cores
+# default just make
 if [ $COMPILE_MODE -eq 0 ]; then
   make -j $NUM_CORES
+
 elif [[ $COMPILE_MODE -eq 1 ]]; then
-  make -e COMPILER_FLAGS=-g -j $NUM_CORES
+  make -e COMPILER_FLAGS="-w -g" -j $NUM_CORES
 elif [[ $COMPILE_MODE -eq 2 ]]; then
-  make -e COMPILER_FLAGS=-O3 -j $NUM_CORES
+  # Regenerate the make file
+  make -e COMPILER_FLAGS="-w -O3" -j $NUM_CORES
 else
   make -j $NUM_CORES
 fi

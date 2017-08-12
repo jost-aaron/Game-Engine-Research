@@ -64,8 +64,8 @@ vec3 mat4::multiply(const vec3& other) const {
 
         return vec3(
                 column[0].x * other.x + column[1].x * other.y + column[2].x * other.z + column[3].x,
-                column[0].y * other.y + column[1].y * other.y + column[2].y * other.z + column[3].y,
-                column[0].z * other.z + column[1].z * other.y + column[2].z * other.z + column[3].z
+                column[0].y * other.x + column[1].y * other.y + column[2].y * other.z + column[3].y,
+                column[0].z * other.x + column[1].z * other.y + column[2].z * other.z + column[3].z
                 );
 }
 
